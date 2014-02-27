@@ -1,11 +1,11 @@
 
-
 def obtener_input():
 	return raw_input("Ingrese su programa en brainfuck\n")
 
 def procesar_input(entrada):
 	array = [0]*30
 	index = 0
+	a_imprimir = ''
 	for x in entrada:
 		if x == '>':
 			if index != 29:
@@ -18,9 +18,14 @@ def procesar_input(entrada):
 		elif x == '-':
 			if array[index] != 0:
 				array[index]-=1
+		elif x == '.':
+			a_imprimir += chr(array[index])
 		else:
 			#lanzar error
 			pass
+		
+	if a_imprimir != '':
+		print 'Res:', a_imprimir
 	print index
 	print printear_array(array)
 
